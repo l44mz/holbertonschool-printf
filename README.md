@@ -118,6 +118,6 @@ man ./man_3_printf
 
 ## Authors
 
-- Ghaida Alsabti - GitHub: https://github.com/ Ghaaidda
+- Ghaida Alsabti - GitHub: https://github.com/Ghaaidda
 - Lama Almazroa - GitHub: https://github.com/l44mz
 
