@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
             }
             else if (*ptr == '%')
             {
-                return (-1);
+                count += _putchar('%');
             }
             else
             {
@@ -52,7 +52,7 @@ int _printf(const char *format, ...)
         }
         else if (*ptr == '%' && *(ptr + 1) == '\0')
         {
-            count += _putchar('%');
+            return (-1);
         }
         else
         {
