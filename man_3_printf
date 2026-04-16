@@ -1,0 +1,113 @@
+.TH _printf (3) "May 2026" "Holberton School" "_printf man-page"
+
+.SH NAME
+_printf \- custom formatted output conversion
+
+.SH SYNOPSIS
+.B #include "main.h"
+.PP
+.BI "int _printf(const char *" format ", ...);"
+
+.SH DESCRIPTION
+The
+.B _printf()
+function produces output according to a format string and writes
+the result to stdout (standard output stream).
+.PP
+The format string is composed of zero or more directives: ordinary characters
+(not %), which are copied unchanged to the output, and conversion
+specifications, each of which results in fetching zero or more subsequent
+arguments.
+.PP
+Each conversion specification is introduced by the character
+.B %
+and ends with a conversion specifier.
+
+.SH CONVERSION SPECIFIERS
+.TP
+.B c
+Prints a single character. The int argument is converted to an unsigned char.
+
+.TP
+.B s
+Prints a string of characters. The argument is expected to be a pointer
+to an array of characters (char *). Characters are printed up to the
+null byte.
+
+.TP
+.B d, i
+Prints a signed decimal integer. The int argument is converted to
+signed decimal notation.
+
+.TP
+.B %
+Prints a literal percent sign. No argument is converted.
+
+.SH RETURN VALUE
+On success,
+.B _printf()
+returns the number of characters printed, excluding the null byte
+used to end output to strings.
+On failure, a negative value is returned.
+
+.SH LIMITATIONS
+The following features of the standard printf are not supported:
+.PP
+.RS
+- Flag characters (0, -, +, space, #)
+.RE
+.RS
+- Field width
+.RE
+.RS
+- Precision
+.RE
+.RS
+- Length modifiers (h, l, ll, etc.)
+.RE
+
+.SH EXAMPLES
+Print a simple string:
+.PP
+.RS
+_printf("Hello, World!\n");
+.RE
+.PP
+Print a character:
+.PP
+.RS
+_printf("Character: %c\n", 'A');
+.RE
+.PP
+Print a string:
+.PP
+.RS
+_printf("String: %s\n", "Holberton");
+.RE
+.PP
+Print an integer:
+.PP
+.RS
+_printf("Integer: %d\n", 42);
+.RE
+.PP
+Print a negative integer:
+.PP
+.RS
+_printf("Negative: %d\n", -762534);
+.RE
+.PP
+Print a percent sign:
+.PP
+.RS
+_printf("Percent: %%\n");
+.RE
+
+.SH AUTHORS
+Written by Ghaida  Alsabti and Lama Almazroa.
+
+.SH SEE ALSO
+.BR printf (3),
+.BR write (2),
+.BR va_start (3)
+

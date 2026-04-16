@@ -43,7 +43,7 @@ printed (excluding the null terminator).
 | File | Description |
 |------|-------------|
 | _printf.c | Main _printf function |
-| handlers.c | Conversion specifier handler functions |
+| helper.c | Conversion specifier helper functions |
 | main.h | Header file with prototypes and include guards |
 | man_3_printf | Manual page for _printf |
 | README.md | Project documentation |
@@ -103,8 +103,7 @@ Percent:   [%]
 
 ## Testing
 
-gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format test/main.c *.c -o test_printf
-./test_printf
+gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c
 
 ---
 
