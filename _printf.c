@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
             }
             else if (*ptr == '%')
             {
-                count += _putchar('%');
+                return (-1);
             }
             else
             {
