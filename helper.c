@@ -75,3 +75,18 @@ int print_int(int i)
 	count += _putchar((num % 10) + '0');
 	return (count);
 }
+
+/**
+ * print_unsigned - prints an unsigned integer to stdout
+ * @num: the unsigned integer to print
+ *
+ * Return: number of characters printed
+ */
+int print_unsigned(unsigned int num)
+{
+	int count = 0;
+	if (num >= 10)
+		count += print_unsigned(num / 10);
+	count += _putchar((num % 10) + '0');
+	return count;
+}
