@@ -40,6 +40,9 @@ int _putchar(char ch)
 int print_string(char *p)
 {
 	int count;
+	
+	if (p == NULL)
+		p = "(null)";
 
 	count = 0;
 	while (*p)
