@@ -31,4 +31,3 @@ int _putchar(char ch)
 	}
 	return (0);
 }
-
