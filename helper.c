@@ -1,48 +1,32 @@
 #include "main.h"
 #include <unistd.h>
+#include <stdarg.h>
 
 /**
- * _putchar - writes a character to stdout using a buffer
- * @ch: the character to write
- *
- * Return: 1 on success, 0 on flush or reset
- */
-int _putchar(char ch)
-{
-	static int count;
-	static char buffer[1024];
-
-	if (ch == -1)
-	{
-		count = 0;
-		return (0);
-	}
-	if (ch == -2 || count == 1024)
-	{
-		write(1, buffer, count);
-		count = 0;
-	}
-	if (ch != -1 && ch != -2)
-	{
-		buffer[count] = ch;
-		count++;
-		return (1);
-	}
-	return (0);
-}
-
-/**
- * print_string - prints a string to stdout
- * @p: pointer to the string to print
+ * handle_char - prints a character to stdout (specifier: 'c')
+ * @args: the va_list containing the character to print
  *
  * Return: number of characters printed
  */
-int print_string(char *p)
+int handle_char(va_list args)
 {
+	char c = (char)va_arg(args, int); // Get char argument (promoted to int)
+	return _putchar(c);
+}
+
+/**
+ * handle_string - prints a string to stdout (specifier: 's')
+ * @args: the va_list containing the string to print
+ *
+ * Return: number of characters printed
+ */
+int handle_string(va_list args)
+{
+	char *p = va_arg(args, char *); // Get string argument 
 	int count;
-	
+
 	if (p == NULL)
-		p = "(null)";
+		p = "(null)"; // Mimic printf behavior for NULL strings
 
 	count = 0;
 	while (*p)
@@ -55,41 +39,40 @@ int print_string(char *p)
 }
 
 /**
- * print_int - prints an integer to stdout
+ * handle_int - prints an integer to stdout (specifier: 'd' | 'i')
+ * @args: the va_list containing the integer to print
+ *
+ * Return: number of characters printed
+ */
+int handle_int(va_list args)
+{
+	int i = va_arg(args, int); // Get int argument
+	return put_int(i);
+}
+
+/**
+ * put_int - prints an integer to stdout
  * @i: the integer to print
  *
  * Return: number of characters printed
  */
-int print_int(int i)
+int put_int(int i)
 {
 	int count;
 	unsigned int num;
 
 	count = 0;
+	
 	if (i < 0)
 	{
-		count += _putchar('-');
+		count += _putchar('-'); // Print negative sign for negative numbers
 		num = (unsigned int)(i * -1);
 	}
 	else
 		num = (unsigned int)i;
 	if (num >= 10)
-		count += print_int(num / 10);
+		count += put_int(num / 10); // Print recursively for digits before the last one
 	count += _putchar((num % 10) + '0');
 	return (count);
 }
 
-/**
- * print_unsigned - prints an unsigned integer to stdout
- * @num: the unsigned integer to print
- *
- * Return: number of characters printed
- */
-int print_unsigned(unsigned int num)
-{
-	int count = 0;
-	if (num >= 10)
-		count += print_unsigned(num / 10);
-	count += _putchar((num % 10) + '0');
-	return count;
-}
