@@ -1,4 +1,3 @@
-
 # _printf - Custom C printf Implementation
 
 A custom implementation of the C standard library printf function,
@@ -24,7 +23,25 @@ printed (excluding the null terminator).
 | %d | Prints a signed decimal integer |
 | %i | Prints a signed integer |
 | %% | Prints a literal % character |
+| %b | Prints an unsigned integer number into binary notation |
+| %u | Prints an unsigned decimal number |
+| %o | Prints an unsigned octal number |
+| %x | Prints an unsigned hexadecimal in lowercase |
+| %X | Prints an unsigned hexadecimal in uppercase |
+---
+## How it works
 
+1. The function iterates through the format string character by character 
+2. When a '%' is encountered, it checks the next character
+3. It matches the specifier to the correct handler function
+4. The corresponding function processes the argument using va_arg
+5. Output is printed using a custom _putchar function
+6. A counter tracks the number of printed characters
+
+## Return Value
+
+Returns the number of characters printed (excluding the null byte).
+Returns -1 on failure.
 ---
 
 ## Requirements
@@ -44,6 +61,10 @@ printed (excluding the null terminator).
 |------|-------------|
 | _printf.c | Main _printf function |
 | helper.c | Conversion specifier helper functions |
+| advanced_1.c | Handles unsigned and octal conversions (%u, %o) |
+| advanced_2.c | Handles lowercase hexadecimal and uppercase hexadecimal 
+Conversions (%x, %X) |
+| advanced_3.c | Handles binary conversion (%b) |
 | main.h | Header file with prototypes and include guards |
 | man_3_printf | Manual page for _printf |
 | README.md | Project documentation |
@@ -67,7 +88,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c -o printf
 
 Include the header in your source file:
 
-#include "main.h"
+#include <main.h>
 
 Then call _printf exactly as you would the standard printf:
 
@@ -89,6 +110,11 @@ _printf("Decimal:   [%d]\n", 42);
 _printf("Integer:   [%i]\n", -7);
 _printf("Negative:  [%d]\n", -762534);
 _printf("Percent:   [%%]\n");
+_printf("Binary:   [%b]\n", 6);
+_printf("Unsigned: [%u]\n", 3000000000);
+_printf("Octal: [%o]\n", 100);
+_printf("Hex lower: [%x]\n", 255);
+_printf("Hex upper: [%X]\n", 255);
 
 Expected output:
 
@@ -98,7 +124,11 @@ Decimal:   [42]
 Integer:   [-7]
 Negative:  [-762534]
 Percent:   [%]
-
+Binary:  [110]
+Unsigned: [3000000000]
+Octal: [144]
+Hex lower: [ff]
+Hex upper: [FF]
 ---
 
 ## Testing
@@ -106,6 +136,14 @@ Percent:   [%]
 gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c
 
 ---
+## Notes
+
+- No support for flag characters (0, -, +, space, #)
+- No field width or precision
+- No length modifiers (h, l, ll)
+- No floating-point support
+---
+
 
 ## Man Page
 
@@ -119,4 +157,3 @@ man ./man_3_printf
 
 - Ghaida Alsabti - GitHub: https://github.com/Ghaaidda
 - Lama Almazroa - GitHub: https://github.com/l44mz
-
