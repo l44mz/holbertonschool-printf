@@ -41,7 +41,9 @@ printed (excluding the null terminator).
 ## Return Value
 
 Returns the number of characters printed (excluding the null byte).
+
 Returns -1 on failure.
+
 ---
 
 ## Requirements
@@ -105,29 +107,49 @@ Return value: Number of characters printed, excluding the null byte.
 ## Examples
 
 _printf("Character: [%c]\n", 'Z');
+
 _printf("String:    [%s]\n", "Holberton");
+
 _printf("Decimal:   [%d]\n", 42);
+
 _printf("Integer:   [%i]\n", -7);
+
 _printf("Negative:  [%d]\n", -762534);
+
 _printf("Percent:   [%%]\n");
+
 _printf("Binary:   [%b]\n", 6);
+
 _printf("Unsigned: [%u]\n", 3000000000);
+
 _printf("Octal: [%o]\n", 100);
+
 _printf("Hex lower: [%x]\n", 255);
+
 _printf("Hex upper: [%X]\n", 255);
 
 Expected output:
 
 Character: [Z]
+
 String:    [Holberton]
+
 Decimal:   [42]
+
 Integer:   [-7]
+
 Negative:  [-762534]
+
 Percent:   [%]
+
 Binary:  [110]
+
 Unsigned: [3000000000]
+
 Octal: [144]
+
 Hex lower: [ff]
+
 Hex upper: [FF]
 ---
 
