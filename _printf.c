@@ -15,6 +15,7 @@ struct specifier specifiers[] = {
         {'o', handle_octal},
         {'x', handle_hex_lower},
         {'X', handle_hex_upper},
+        {'b', handle_binary},
         {'\0', NULL} /* null terminator to mark end of array */
     };
 

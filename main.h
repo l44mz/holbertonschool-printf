@@ -31,6 +31,8 @@ int handle_hex_lower(va_list args);
 int put_hex_lower(unsigned int num);
 int handle_hex_upper(va_list args);
 int put_hex_upper(unsigned int num);
+int handle_binary(va_list args);
+int put_binary(unsigned int num);
 
 #endif
 
