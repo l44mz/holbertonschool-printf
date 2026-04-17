@@ -36,7 +36,7 @@ int specifier_handler(char specifier, va_list args)
             return specifiers[i].fptr(args);
         }
     }
-    return 0;
+    return (-1); /* No valid specifier */
 }
 
 /**
@@ -74,7 +74,7 @@ int _printf(const char *format, ...)
             else 
             {
                 printed = specifier_handler(*ptr, args);
-                if (printed > 0) /* Valid specifier found */
+                if (printed != -1) /* Valid specifier found */
                 {
                     count += printed;
                 }
