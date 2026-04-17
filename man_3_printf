@@ -1,10 +1,10 @@
-.TH _printf (3) "May 2026" "Holberton School" "_printf man-page"
+.TH _printf 3 "May 2026" "Holberton School" "_printf man-page"
 
 .SH NAME
-_printf \- custom formatted output conversion
+_printf \- formatted output conversion
 
 .SH SYNOPSIS
-.B #include "main.h"
+.B #include <main.h>
 .PP
 .BI "int _printf(const char *" format ", ...);"
 
@@ -22,6 +22,20 @@ arguments.
 Each conversion specification is introduced by the character
 .B %
 and ends with a conversion specifier.
+.PP
+If an unknown conversion specifier is encountered, the '%' character
+is printed followed by the unknown specifier.
+.PP
+The
+.B _printf()
+function returns the number of characters printed.
+.PP
+If format is NULL, or if a '%' appears at the end of the format string with no following character, the function returns -1.
+
+.PP
+Output is buffered using an internal static buffer. Characters are
+stored and written to stdout when the buffer is full or when a flush
+operation is triggered.
 
 .SH CONVERSION SPECIFIERS
 .TP
@@ -35,7 +49,8 @@ to an array of characters (char *). Characters are printed up to the
 null byte.
 
 .TP
-.B d, i
+.B d
+.B i
 Prints a signed decimal integer. The int argument is converted to
 signed decimal notation.
 
@@ -43,14 +58,39 @@ signed decimal notation.
 .B %
 Prints a literal percent sign. No argument is converted.
 
+.TP
+.B b
+Prints an unsigned integer in binary notation. The unsigned int argument is converted to
+base 2 representation and printed as a sequence of '0' and '1' characters.
+
+.TP
+.B u
+Prints an unsigned decimal integer. The unsigned int argument is converted to
+base 10 notation.
+
+.TP
+.B o
+Prints an unsigned integer in octal notation. The unsigned int argument is
+converted to base 8 representation.
+
+.TP
+.B x
+Prints an unsigned integer in lowercase hexadecimal notation. The unsigned int
+argument is converted to base 16 using digits 0–9 and a–f.
+
+.TP
+.B X
+Prints an unsigned integer in uppercase hexadecimal notation. The unsigned int
+argument is converted to base 16 using digits 0–9 and A–F.
+
 .SH RETURN VALUE
 On success,
 .B _printf()
 returns the number of characters printed, excluding the null byte
 used to end output to strings.
-On failure, a negative value is returned.
+Returns -1 if format is NULL or if the format string ends with a bare '%'.
 
-.SH LIMITATIONS
+.SH NOTES
 The following features of the standard printf are not supported:
 .PP
 .RS
@@ -67,35 +107,41 @@ The following features of the standard printf are not supported:
 .RE
 
 .SH EXAMPLES
+.PP
 Print a simple string:
 .PP
 .RS
 _printf("Hello, World!\n");
 .RE
+
 .PP
 Print a character:
 .PP
 .RS
 _printf("Character: %c\n", 'A');
 .RE
+
 .PP
 Print a string:
 .PP
 .RS
 _printf("String: %s\n", "Holberton");
 .RE
+
 .PP
 Print an integer:
 .PP
 .RS
 _printf("Integer: %d\n", 42);
 .RE
+
 .PP
 Print a negative integer:
 .PP
 .RS
 _printf("Negative: %d\n", -762534);
 .RE
+
 .PP
 Print a percent sign:
 .PP
@@ -103,8 +149,43 @@ Print a percent sign:
 _printf("Percent: %%\n");
 .RE
 
+.PP
+Print a binary number:
+.PP
+.RS
+_printf("Binary: %b\n", 5);
+.RE
+
+.PP
+Print an unsigned decimal number:
+.PP
+.RS
+_printf("Unsigned decimal: %u\n", 30);
+.RE
+
+.PP
+Print an unsigned octal number:
+.PP
+.RS
+_printf("Unsigned octal: %o\n", 100);
+.RE
+
+.PP
+Print unsigned hexadecimal in lowercase:
+.PP
+.RS
+_printf("Unsigned hexadecimal: %x\n", 255);
+.RE
+
+.PP
+Print unsigned hexadecimal in uppercase:
+.PP
+.RS
+_printf("Unsigned hexadecimal: %X\n", 255);
+.RE
+
 .SH AUTHORS
-Written by Ghaida  Alsabti and Lama Almazroa.
+Written by Ghaida Alsabti and Lama Almazroa.
 
 .SH SEE ALSO
 .BR printf (3),
