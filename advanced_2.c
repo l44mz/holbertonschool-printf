@@ -11,7 +11,7 @@
  */
 int handle_hex_lower(va_list args) 
 {
-    unsigned int n = va_arg(args, unsigned int); // Get unsigned int for hexadecimal
+    unsigned int n = va_arg(args, unsigned int); /* Get unsigned int for hexadecimal */
     return put_hex_lower(n);
 }
 
@@ -24,7 +24,7 @@ int handle_hex_lower(va_list args)
 int put_hex_lower(unsigned int num)
 {
     int count = 0;
-    char *hex_digits = "0123456789abcdef"; // Hexadecimal digits for lowercase
+    char *hex_digits = "0123456789abcdef"; /* Hexadecimal digits for lowercase */
 
     if (num >= 16)
         count += put_hex_lower(num / 16);
@@ -55,7 +55,7 @@ int handle_hex_upper(va_list args)
 int put_hex_upper(unsigned int num)
 {
     int count = 0;
-    char *hex_digits = "0123456789ABCDEF"; // Hexadecimal digits for uppercase
+    char *hex_digits = "0123456789ABCDEF"; /* Hexadecimal digits for uppercase */
 
     if (num >= 16)
         count += put_hex_upper(num / 16);

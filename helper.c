@@ -10,7 +10,7 @@
  */
 int handle_char(va_list args)
 {
-	char c = (char)va_arg(args, int); // Get char argument (promoted to int)
+	char c = (char)va_arg(args, int); /* Get char argument (promoted to int) */
 	return _putchar(c);
 }
 
@@ -22,11 +22,11 @@ int handle_char(va_list args)
  */
 int handle_string(va_list args)
 {
-	char *p = va_arg(args, char *); // Get string argument 
+	char *p = va_arg(args, char *); /* Get string argument */
 	int count;
 
 	if (p == NULL)
-		p = "(null)"; // Mimic printf behavior for NULL strings
+		p = "(null)"; /* Mimic printf behavior for NULL strings */
 
 	count = 0;
 	while (*p)
@@ -46,7 +46,7 @@ int handle_string(va_list args)
  */
 int handle_int(va_list args)
 {
-	int i = va_arg(args, int); // Get int argument
+	int i = va_arg(args, int); /* Get int argument */
 	return put_int(i);
 }
 
@@ -65,13 +65,13 @@ int put_int(int i)
 	
 	if (i < 0)
 	{
-		count += _putchar('-'); // Print negative sign for negative numbers
+		count += _putchar('-'); /* Print negative sign for negative numbers */
 		num = (unsigned int)(i * -1);
 	}
 	else
 		num = (unsigned int)i;
 	if (num >= 10)
-		count += put_int(num / 10); // Print recursively for digits before the last one
+		count += put_int(num / 10); /* Print recursively for digits before the last one */
 	count += _putchar((num % 10) + '0');
 	return (count);
 }

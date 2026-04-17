@@ -10,7 +10,7 @@
  */
 int handle_unsigned(va_list args) 
 {
-    unsigned int n = va_arg(args, unsigned int); // Get unsigned int
+    unsigned int n = va_arg(args, unsigned int); /* Get unsigned int */
     return put_unsigned(n);
 }
 
@@ -39,7 +39,7 @@ int put_unsigned(unsigned int num)
  */
 int handle_octal(va_list args) 
 {
-    unsigned int n = va_arg(args, unsigned int); // Get unsigned int for octal
+    unsigned int n = va_arg(args, unsigned int); /* Get unsigned int for octal */
     return put_octal(n);
 }
 

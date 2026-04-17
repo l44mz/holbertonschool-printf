@@ -15,7 +15,7 @@ struct specifier specifiers[] = {
         {'o', handle_octal},
         {'x', handle_hex_lower},
         {'X', handle_hex_upper},
-        {'\0', NULL} //null terminator to mark end of array
+        {'\0', NULL} /* null terminator to mark end of array */
     };
 
 /**
@@ -52,33 +52,33 @@ int _printf(const char *format, ...)
     va_list args;
 
     if (!format)
-        return (-1); // Case: handle NULL format string
+        return (-1); /* Case: handle NULL format string */
 
     va_start(args, format);
-    _putchar(-1); // Reset buffer
+    _putchar(-1); /* Reset buffer */
 
     while (*ptr)
     {
         if (*ptr == '%')
         {
             ptr++;
-            if (*ptr == '\0') // Case: _printf("%")
+            if (*ptr == '\0') /* Case: _printf("%") */
             {
                 va_end(args);
                 return (-1); 
             }
-            if (*ptr == '%') // Case: _printf("%%")
+            if (*ptr == '%') /* Case: _printf("%%") */
             {
                 count += _putchar('%');
             }
             else 
             {
                 printed = specifier_handler(*ptr, args);
-                if (printed > 0) // Valid specifier found
+                if (printed > 0) /* Valid specifier found */
                 {
                     count += printed;
                 }
-                else // Unknown specifier: _printf("%[unknown character]")
+                else /* Unknown specifier: _printf("%[unknown character]") */
                 {
                     count += _putchar('%');
                     count += _putchar(*ptr);
@@ -91,7 +91,7 @@ int _printf(const char *format, ...)
         }
         ptr++;
     }
-    _putchar(-2); // Final flush
+    _putchar(-2); /* Final Flush */
     va_end(args);
     return (count);
 }
