@@ -128,7 +128,10 @@ _printf("Hex lower: [%x]\n", 255);
 
 _printf("Hex upper: [%X]\n", 255);
 
-Expected output:
+
+---
+
+## Expected output:
 
 Character: [Z]
 
@@ -151,6 +154,7 @@ Octal: [144]
 Hex lower: [ff]
 
 Hex upper: [FF]
+
 ---
 
 ## Testing
