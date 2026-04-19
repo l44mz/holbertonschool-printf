@@ -1,4 +1,4 @@
-.TH _printf 3 "May 2026" "Holberton School" "_printf man-page"
+.TH _printf 3 "April 2026" "Holberton School" "_printf man-page"
 
 .SH NAME
 _printf \- formatted output conversion
